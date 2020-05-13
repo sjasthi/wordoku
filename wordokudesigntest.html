@@ -1,0 +1,278 @@
+
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN''http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'><html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
+<head>
+	﻿﻿
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="wordokustyle.css">
+	
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale = 1">
+    <title>Wordoku Puzzle Generator</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="jumbotron" id="jumbos">
+        </div>
+        <div class="panel">
+            <div class="panel-group">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div align="center">
+									<h2>Wordoku
+																			</h2>
+								</div>
+								<div class="col-sm-2">
+                                </div>
+                                <div class="col-sm-4" align="center">
+                                    <h4>Display Mode:</h4>
+                                </div>
+                                
+                                <div class="col-sm-4">
+                                    <select class="form-control" id="displayMode" name="displayMode" onchange="updatePuzzleDisplay();">
+										<option value="No Numbers" selected="selected">No Numbers (Default)</option>
+										<option value="Numbers and Letter">Numbers & Letter</option>
+										<option value="Just Numbers">Just Numbers</option>
+									</select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="form-group" style='width:40%;margin:auto;border:2px solid black;padding-top:10px;padding-bottom:10px;text-align:center'>
+                                <div class="text-center">
+                                    <h3>Character Key</h3>
+                                </div>
+                            </div>
+                            <div class="form-group" style='width:40%;margin:auto;border:2px solid black;padding-top:10px;padding-bottom:10px;text-align:center'>
+                                <div class="text-center">
+                                    <h3>
+									A B C D 									</h3>
+                                </div>
+                            </div>
+                        </div>
+                        </br></br>
+						<!-- NORMAL -->
+                        <div class="col-sm-12"  id="puzzleNormal">
+							<div class="puzzle">
+								<table id="grid">
+									<tr><td id="cell2x2-0" bgcolor="#EEEEEE"> A </td>
+													<td id="cell2x2-1" bgcolor="#EEEEEE"> B </td>
+													<td id="cell2x2-2" bgcolor="#EEEEEE"> D </td>
+													<td id="cell2x2-3" bgcolor="#EEEEEE"> C </td>
+													</tr><tr><td id="cell2x2-4" bgcolor="#EEEEEE"> C </td>
+													<td id="cell2x2-5" bgcolor="#EEEEEE"> D </td>
+													<td id="cell2x2-6" bgcolor="#EEEEEE"> A </td>
+													<td id="cell2x2-7" bgcolor="#EEEEEE"> B </td>
+													</tr><tr><td id="cell2x2-8" bgcolor="#EEEEEE"> D </td>
+													<td id="cell2x2-9" bgcolor="#EEEEEE"> C </td>
+													<td id="cell2x2-10" bgcolor="#EEEEEE"> B </td>
+													<td id="cell2x2-11" bgcolor="#EEEEEE"> A </td>
+													</tr><tr><td id="cell2x2-12" bgcolor="#EEEEEE"> B </td>
+													<td id="cell2x2-13" bgcolor="#EEEEEE"> A </td>
+													<td id="cell2x2-14" bgcolor="#EEEEEE"> C </td>
+													<td id="cell2x2-15" bgcolor="#EEEEEE"> D </td>
+													</tr>								</table>
+							</div>
+                        </div>
+						<!-- NUMBER AND LETTER -->
+						<div class="col-sm-12"  id="puzzleNumberAndLetter">
+							<div class="puzzle" style="position: relative;right: 24px;">
+								<table id="grid">
+									<tr><td style="border: none;"> </td><td style="border: none;"> 1 </td><td style="border: none;"> 2 </td><td style="border: none;"> 3 </td><td style="border: none;"> 4 </td><tr/><tr><tr><td class="headerCell" style="border: none;">A</td><td id="cell2x2-0" bgcolor="#EEEEEE"> A </td>
+													<td id="cell2x2-1" bgcolor="#EEEEEE"> B </td>
+													<td id="cell2x2-2" bgcolor="#EEEEEE"> D </td>
+													<td id="cell2x2-3" bgcolor="#EEEEEE"> C </td>
+													</tr><tr><td class="headerCell" style="border: none;">B</td><td id="cell2x2-4" bgcolor="#EEEEEE"> C </td>
+													<td id="cell2x2-5" bgcolor="#EEEEEE"> D </td>
+													<td id="cell2x2-6" bgcolor="#EEEEEE"> A </td>
+													<td id="cell2x2-7" bgcolor="#EEEEEE"> B </td>
+													</tr><tr><td class="headerCell" style="border: none;">C</td><td id="cell2x2-8" bgcolor="#EEEEEE"> D </td>
+													<td id="cell2x2-9" bgcolor="#EEEEEE"> C </td>
+													<td id="cell2x2-10" bgcolor="#EEEEEE"> B </td>
+													<td id="cell2x2-11" bgcolor="#EEEEEE"> A </td>
+													</tr><tr><td class="headerCell" style="border: none;">D</td><td id="cell2x2-12" bgcolor="#EEEEEE"> B </td>
+													<td id="cell2x2-13" bgcolor="#EEEEEE"> A </td>
+													<td id="cell2x2-14" bgcolor="#EEEEEE"> C </td>
+													<td id="cell2x2-15" bgcolor="#EEEEEE"> D </td>
+													</tr>								</table>
+							</div>
+                        </div>
+						<!-- NUMBERS -->
+                        <div class="col-sm-12"  id="puzzleNumbers">
+							<div class="puzzle">
+								<table id="grid">
+									<tr><td id="cell2x2-0" bgcolor="#EEEEEE"> A </td>
+													<td id="cell2x2-1" bgcolor="#EEEEEE"> B </td>
+													<td id="cell2x2-2" bgcolor="#EEEEEE"> D </td>
+													<td id="cell2x2-3" bgcolor="#EEEEEE"> C </td>
+													</tr><tr><td id="cell2x2-4" bgcolor="#EEEEEE"> C </td>
+													<td id="cell2x2-5" bgcolor="#EEEEEE"> D </td>
+													<td id="cell2x2-6" bgcolor="#EEEEEE"> A </td>
+													<td id="cell2x2-7" bgcolor="#EEEEEE"> B </td>
+													</tr><tr><td id="cell2x2-8" bgcolor="#EEEEEE"> D </td>
+													<td id="cell2x2-9" bgcolor="#EEEEEE"> C </td>
+													<td id="cell2x2-10" bgcolor="#EEEEEE"> B </td>
+													<td id="cell2x2-11" bgcolor="#EEEEEE"> A </td>
+													</tr><tr><td id="cell2x2-12" bgcolor="#EEEEEE"> B </td>
+													<td id="cell2x2-13" bgcolor="#EEEEEE"> A </td>
+													<td id="cell2x2-14" bgcolor="#EEEEEE"> C </td>
+													<td id="cell2x2-15" bgcolor="#EEEEEE"> D </td>
+													</tr>								</table>
+							</div>
+						</div>
+                    </div>					
+                </div>
+                <div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-sm-4">
+                                <input type="checkbox" class="showSolution" name="showSolutionTextBox" onchange="valueChanged()" 
+								> Show solution?
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="solutionSection"> 
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div align="center"><h2>Solution</h2></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="form-group" style='width:40%;margin:auto;border:2px solid black;padding-top:10px;padding-bottom:10px;text-align:center'>
+                                    <div class="text-center">
+                                        <h3>Character Key</h3>
+                                    </div>
+                                </div>
+                                <div class="form-group" style='width:40%;margin:auto;border:2px solid black;padding-top:10px;padding-bottom:10px;text-align:center'>
+                                    <div class="text-center">
+                                        <h3>
+											A B C D 										</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            </br></br>
+							
+							<!-- Normal Solution -->
+                            <div class="col-sm-12" id="solutionNormal">
+                                <div class="col-sm-12">
+									<div class="puzzle">
+										<table id="grid">
+											<tr><td id="cell2x2-0" bgcolor="#EEEEEE"> A </td>
+															<td id="cell2x2-1" bgcolor="#EEEEEE"> B </td>
+															<td id="cell2x2-2" bgcolor="#EEEEEE"> D </td>
+															<td id="cell2x2-3" bgcolor="#EEEEEE"> C </td>
+															</tr><tr><td id="cell2x2-4" bgcolor="#EEEEEE"> C </td>
+															<td id="cell2x2-5" bgcolor="#EEEEEE"> D </td>
+															<td id="cell2x2-6" bgcolor="#EEEEEE"> A </td>
+															<td id="cell2x2-7" bgcolor="#EEEEEE"> B </td>
+															</tr><tr><td id="cell2x2-8" bgcolor="#EEEEEE"> D </td>
+															<td id="cell2x2-9" bgcolor="#EEEEEE"> C </td>
+															<td id="cell2x2-10" bgcolor="#EEEEEE"> B </td>
+															<td id="cell2x2-11" bgcolor="#EEEEEE"> A </td>
+															</tr><tr><td id="cell2x2-12" bgcolor="#EEEEEE"> B </td>
+															<td id="cell2x2-13" bgcolor="#EEEEEE"> A </td>
+															<td id="cell2x2-14" bgcolor="#EEEEEE"> C </td>
+															<td id="cell2x2-15" bgcolor="#EEEEEE"> D </td>
+															</tr>										</table>
+									</div>
+								</div>
+							</div>
+							<!-- Normal Numbers and Letters -->
+							<div class="col-sm-12" id="solutionNumberAndLetter">
+                                <div class="col-sm-12">
+									<div class="puzzle" style="position: relative;right: 24px;">
+										<table id="grid">
+											<tr><td style="border: none;"> </td><td style="border: none;"> 1 </td><td style="border: none;"> 2 </td><td style="border: none;"> 3 </td><td style="border: none;"> 4 </td><tr/><tr><tr><td class="headerCell" style="border: none;">A</td><td id="cell2x2-0" bgcolor="#EEEEEE"> A </td>
+															<td id="cell2x2-1" bgcolor="#EEEEEE"> B </td>
+															<td id="cell2x2-2" bgcolor="#EEEEEE"> D </td>
+															<td id="cell2x2-3" bgcolor="#EEEEEE"> C </td>
+															</tr><tr><td class="headerCell" style="border: none;">B</td><td id="cell2x2-4" bgcolor="#EEEEEE"> C </td>
+															<td id="cell2x2-5" bgcolor="#EEEEEE"> D </td>
+															<td id="cell2x2-6" bgcolor="#EEEEEE"> A </td>
+															<td id="cell2x2-7" bgcolor="#EEEEEE"> B </td>
+															</tr><tr><td class="headerCell" style="border: none;">C</td><td id="cell2x2-8" bgcolor="#EEEEEE"> D </td>
+															<td id="cell2x2-9" bgcolor="#EEEEEE"> C </td>
+															<td id="cell2x2-10" bgcolor="#EEEEEE"> B </td>
+															<td id="cell2x2-11" bgcolor="#EEEEEE"> A </td>
+															</tr><tr><td class="headerCell" style="border: none;">D</td><td id="cell2x2-12" bgcolor="#EEEEEE"> B </td>
+															<td id="cell2x2-13" bgcolor="#EEEEEE"> A </td>
+															<td id="cell2x2-14" bgcolor="#EEEEEE"> C </td>
+															<td id="cell2x2-15" bgcolor="#EEEEEE"> D </td>
+															</tr>										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>	
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	// Shows the solution on initialization based on whether the box is checked
+	if($('.showSolution').is(":checked")){
+		$(".solutionSection").show();
+	}
+	else{
+		$(".solutionSection").hide();
+	}
+	
+	// Set default hidden/shown puzzles
+	$('#puzzleNormal').show();
+	$('#puzzleNumberAndLetter').hide();
+	$('#puzzleNumbers').hide();
+	$('#solutionNormal').show();
+	$('#solutionNumberAndLetter').hide();
+
+	// Updates the solution section to hidden/visable on check box update
+	function valueChanged(){
+		if($('.showSolution').is(":checked")){  
+			$(".solutionSection").show();
+		}
+		else{
+			$(".solutionSection").hide();
+		}
+	}
+	
+	// Function for showing/hiding puzzles when the puzzle display option is changed
+	function updatePuzzleDisplay(){		
+		if($('#displayMode').val() == "No Numbers"){
+			$('#puzzleNormal').show();
+			$('#puzzleNumberAndLetter').hide();
+			$('#puzzleNumbers').hide();
+			$('#solutionNormal').show();
+			$('#solutionNumberAndLetter').hide();
+		}
+		else if($('#displayMode').val() == "Numbers and Letter"){
+			$('#puzzleNormal').hide();
+			$('#puzzleNumberAndLetter').show();
+			$('#puzzleNumbers').hide();
+			$('#solutionNormal').hide();
+			$('#solutionNumberAndLetter').show();
+		}
+		else if($('#displayMode').val() == "Just Numbers"){
+			$('#puzzleNormal').hide();
+			$('#puzzleNumberAndLetter').hide();
+			$('#puzzleNumbers').show();
+			$('#solutionNormal').show();
+			$('#solutionNumberAndLetter').hide();
+		}
+	}
+</script>
+</html>

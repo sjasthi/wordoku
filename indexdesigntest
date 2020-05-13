@@ -1,0 +1,103 @@
+
+﻿
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN''http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale = 1">
+    <title>Word Find</title>
+</head>
+<body>
+    <form action="index.php" method="post">
+        <div class="container-fluid">
+            <div class="jumbotron" id="jumbos">
+            </div>
+            <div class="panel">
+                <div class="panel-group">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div align="center"><h2>Please enter your Wordoku puzzle details</h2></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-sm-3">
+                                        <label>Puzzle Size</label>
+                                        <select class="form-control" id="size" name="size" onchange="sizeChange(this.value);">
+                                            <option value="2x2" selected="selected">2x2</option>
+                                            <option value="3x3" >3x3</option>
+                                            <option value="4x4">4x4</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label>Puzzle Difficulty</label>
+                                        <select class="form-control" id="difficulty" name="difficulty">
+                                            <option value="Beginner" selected="selected">Beginner</option>
+                                            <option value="Advanced">Advanced</option>
+                                            <option value="Expert">Expert</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label>Enter Characters</label>
+                                        <textarea class="form-control" style="resize: none;" rows="1"id="characterBank" name="word" ></textarea>
+                                        <label class="charLabel" name="charName" value="">4 characters for a 2x2 puzzle</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-sm-4">
+                                        <input type="checkbox" name="showSolution" checked> Show solution on creation?
+                                    </div>
+                                </div>
+                            </div>
+							<div class="row">
+                                <div class="form-group">
+                                    <div class="col-sm-4">
+                                        <label class="charLabel" style="color:red;font-size:14px" name="charName" value="">
+										Error: Word not the right length for a 3x3 puzzle										</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12"><input type="submit" name="submit" class="btn btn-primary btn-lg" value="Generate"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
+<script>
+	// Update label information about the length of the input word based on selected puzzle size
+	function sizeChange(sizeValue){
+		var lbl = document.getElementsByName('charName')[0];
+			
+		if(sizeValue === '2x2'){
+			lbl.innerHTML='4 characters for a 2x2 puzzle';
+		}
+		else if(sizeValue === '3x3'){
+			lbl.innerHTML='9 characters for a 3x3 puzzle';
+		}
+		else if(sizeValue === "4x4"){
+			lbl.innerHTML='16 characters for a 4x4 puzzle';
+		}
+	}
+</script>
+</html>

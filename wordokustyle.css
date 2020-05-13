@@ -1,0 +1,81 @@
+html {
+	font-family: Helvetica, Arial, sans-serif;
+}
+body { 
+	font-family: "Helvetica", Verdana, sans-serif;
+	font-size: 1.1em;
+	background-color: white;
+	margin-left: 15%;
+	margin-right: 15%;
+	margin-top: 0%;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	border-radius: 5px;
+}
+.jumbotron {
+	background-image: url("silcHeader.png");
+	-webkit-background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+	-o-background-size: 100% 100%;
+	background-size: 100% 100%;
+	height: 179px;
+}
+.puzzle html, body {
+            background-color: white;
+          }
+.puzzle table {
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+.puzzle td {
+    border: 2px solid #000000;
+    text-align: center;
+    vertical-align: middle; 
+    text-align: center;
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+  }
+ .puzzle td.headerCell  {
+	border: none;
+ }
+.puzzle #cell2x2-0, #cell2x2-1, #cell2x2-2, #cell2x2-3 { border-top: 4px solid #000000; }
+.puzzle #cell2x2-8, #cell2x2-9, #cell2x2-10, #cell2x2-11 { border-top: 4px solid #000000; }
+.puzzle #cell2x2-1, #cell2x2-5, #cell2x2-9, #cell2x2-13 { border-right: 4px solid #000000; }
+.puzzle #cell2x2-3, #cell2x2-7, #cell2x2-11, #cell2x2-15 { border-right: 4px solid #000000; }
+.puzzle #cell2x2-4, #cell2x2-5, #cell2x2-6, #cell2x2-7 { border-bottom: 4px solid #000000; }
+.puzzle #cell2x2-12, #cell2x2-13, #cell2x2-14, #cell2x2-15 { border-bottom: 4px solid #000000; }
+.puzzle #cell2x2-0,  #cell2x2-4,  #cell2x2-8, #cell2x2-12 { border-left: 4px solid #000000; }
+.puzzle #cell2x2-2,  #cell2x2-6,  #cell2x2-10, #cell2x2-14 { border-left: 4px solid #000000; }
+
+.puzzle #cell3x3-0, #cell3x3-1, #cell3x3-2, #cell3x3-3, #cell3x3-4, #cell3x3-5, #cell3x3-6, #cell3x3-7, #cell3x3-8 { border-top: 4px solid #000000; }
+.puzzle #cell3x3-27, #cell3x3-28, #cell3x3-29, #cell3x3-30, #cell3x3-31, #cell3x3-32, #cell3x3-33, #cell3x3-34, #cell3x3-35 { border-top:4px solid #000000; }
+.puzzle #cell3x3-54, #cell3x3-55, #cell3x3-56, #cell3x3-57, #cell3x3-58, #cell3x3-59, #cell3x3-60, #cell3x3-61, #cell3x3-62 { border-top:4px solid #000000; }
+.puzzle #cell3x3-18, #cell3x3-19, #cell3x3-20, #cell3x3-21, #cell3x3-22, #cell3x3-23, #cell3x3-24, #cell3x3-25, #cell3x3-26 { border-bottom:4px solid #000000; }
+.puzzle #cell3x3-45, #cell3x3-46, #cell3x3-47, #cell3x3-48, #cell3x3-49, #cell3x3-50, #cell3x3-51, #cell3x3-52, #cell3x3-53 { border-bottom:4px solid #000000; }
+.puzzle #cell3x3-72, #cell3x3-73, #cell3x3-74, #cell3x3-75, #cell3x3-76, #cell3x3-77, #cell3x3-78, #cell3x3-79, #cell3x3-80 { border-bottom:4px solid #000000; }
+.puzzle #cell3x3-0, #cell3x3-9, #cell3x3-18, #cell3x3-27, #cell3x3-36, #cell3x3-45, #cell3x3-54, #cell3x3-63, #cell3x3-72 { border-left:4px solid #000000; }
+.puzzle #cell3x3-3, #cell3x3-12, #cell3x3-21, #cell3x3-30, #cell3x3-39, #cell3x3-48, #cell3x3-57, #cell3x3-66, #cell3x3-75 { border-left:4px solid #000000; }
+.puzzle #cell3x3-6, #cell3x3-15, #cell3x3-24, #cell3x3-33, #cell3x3-42, #cell3x3-51, #cell3x3-60, #cell3x3-69, #cell3x3-78 { border-left:4px solid #000000; }
+.puzzle #cell3x3-2, #cell3x3-11, #cell3x3-20, #cell3x3-29, #cell3x3-38, #cell3x3-47, #cell3x3-56, #cell3x3-65, #cell3x3-74 { border-right:4px solid #000000; }
+.puzzle #cell3x3-5, #cell3x3-14, #cell3x3-23, #cell3x3-32, #cell3x3-41, #cell3x3-50, #cell3x3-59, #cell3x3-68, #cell3x3-77 { border-right:4px solid #000000; }
+.puzzle #cell3x3-8, #cell3x3-17, #cell3x3-26, #cell3x3-35, #cell3x3-44, #cell3x3-53, #cell3x3-62, #cell3x3-71, #cell3x3-80 { border-right:4px solid #000000; }
+
+.puzzle #cell4x4-0, #cell4x4-1, #cell4x4-2, #cell4x4-3, #cell4x4-4, #cell4x4-5, #cell4x4-6, #cell4x4-7, #cell4x4-8, #cell4x4-9, #cell4x4-10, #cell4x4-11, #cell4x4-12, #cell4x4-13, #cell4x4-14, #cell4x4-15 { border-top:4px solid #000000; }
+.puzzle #cell4x4-48, #cell4x4-49, #cell4x4-50, #cell4x4-51, #cell4x4-53, #cell4x4-54, #cell4x4-55, #cell4x4-56, #cell4x4-57, #cell4x4-58, #cell4x4-59, #cell4x4-60, #cell4x4-61, #cell4x4-62, #cell4x4-63 { border-bottom:4px solid #000000; }
+.puzzle #cell4x4-64, #cell4x4-65, #cell4x4-66, #cell4x4-67, #cell4x4-68, #cell4x4-69, #cell4x4-70, #cell4x4-71, #cell4x4-72, #cell4x4-73, #cell4x4-74, #cell4x4-75, #cell4x4-76, #cell4x4-77, #cell4x4-78, #cell4x4-79 { border-top:4px solid #000000; }
+.puzzle #cell4x4-112, #cell4x4-113, #cell4x4-114, #cell4x4-115, #cell4x4-117, #cell4x4-118, #cell4x4-119, #cell4x4-120, #cell4x4-121, #cell4x4-122, #cell4x4-123, #cell4x4-124, #cell4x4-125, #cell4x4-126, #cell4x4-127 { border-bottom:4px solid #000000; }
+.puzzle #cell4x4-128, #cell4x4-129, #cell4x4-130, #cell4x4-131, #cell4x4-132, #cell4x4-133, #cell4x4-134, #cell4x4-135, #cell4x4-136, #cell4x4-137, #cell4x4-138, #cell4x4-139, #cell4x4-140, #cell4x4-141, #cell4x4-142, #cell4x4-143 { border-top:4px solid #000000; }
+.puzzle #cell4x4-176, #cell4x4-177, #cell4x4-178, #cell4x4-179, #cell4x4-181, #cell4x4-182, #cell4x4-183, #cell4x4-184, #cell4x4-185, #cell4x4-186, #cell4x4-187, #cell4x4-188, #cell4x4-189, #cell4x4-190, #cell4x4-191 { border-bottom:4px solid #000000; }
+.puzzle #cell4x4-192, #cell4x4-193, #cell4x4-194, #cell4x4-195, #cell4x4-196, #cell4x4-197, #cell4x4-198, #cell4x4-199, #cell4x4-200, #cell4x4-201, #cell4x4-202, #cell4x4-203, #cell4x4-204, #cell4x4-205, #cell4x4-206, #cell4x4-207 { border-top:4px solid #000000; }
+.puzzle #cell4x4-240, #cell4x4-241, #cell4x4-242, #cell4x4-243, #cell4x4-244, #cell4x4-245, #cell4x4-246, #cell4x4-247, #cell4x4-248, #cell4x4-249, #cell4x4-250, #cell4x4-251, #cell4x4-252, #cell4x4-253, #cell4x4-254, #cell4x4-255 { border-bottom:4px solid #000000; }
+.puzzle #cell4x4-0, #cell4x4-16, #cell4x4-32, #cell4x4-48, #cell4x4-64, #cell4x4-80, #cell4x4-96, #cell4x4-112, #cell4x4-128, #cell4x4-144, #cell4x4-160, #cell4x4-176, #cell4x4-192, #cell4x4-208, #cell4x4-224, #cell4x4-240 { border-left:4px solid #000000; }
+.puzzle #cell4x4-3, #cell4x4-19, #cell4x4-35, #cell4x4-51, #cell4x4-67, #cell4x4-83, #cell4x4-99, #cell4x4-115, #cell4x4-131, #cell4x4-147, #cell4x4-163, #cell4x4-179, #cell4x4-195, #cell4x4-211, #cell4x4-227, #cell4x4-243 { border-right:4px solid #000000; }
+.puzzle #cell4x4-4, #cell4x4-20, #cell4x4-36, #cell4x4-52, #cell4x4-68, #cell4x4-84, #cell4x4-100, #cell4x4-116, #cell4x4-132, #cell4x4-148, #cell4x4-164, #cell4x4-180, #cell4x4-196, #cell4x4-212, #cell4x4-228, #cell4x4-244 { border-left:4px solid #000000; }
+.puzzle #cell4x4-7, #cell4x4-23, #cell4x4-39, #cell4x4-55, #cell4x4-71, #cell4x4-87, #cell4x4-103, #cell4x4-119, #cell4x4-135, #cell4x4-151, #cell4x4-167, #cell4x4-183, #cell4x4-199, #cell4x4-215, #cell4x4-231, #cell4x4-247 { border-right:4px solid #000000; }
+.puzzle #cell4x4-8, #cell4x4-24, #cell4x4-40, #cell4x4-56, #cell4x4-72, #cell4x4-88, #cell4x4-104, #cell4x4-120, #cell4x4-136, #cell4x4-152, #cell4x4-168, #cell4x4-184, #cell4x4-200, #cell4x4-216, #cell4x4-232, #cell4x4-248 { border-left:4px solid #000000; }
+.puzzle #cell4x4-11, #cell4x4-27, #cell4x4-43, #cell4x4-59, #cell4x4-75, #cell4x4-91, #cell4x4-107, #cell4x4-123, #cell4x4-139, #cell4x4-155, #cell4x4-171, #cell4x4-187, #cell4x4-203, #cell4x4-219, #cell4x4-235, #cell4x4-251 { border-right:4px solid #000000; }
+.puzzle #cell4x4-12, #cell4x4-28, #cell4x4-44, #cell4x4-60, #cell4x4-76, #cell4x4-92, #cell4x4-108, #cell4x4-124, #cell4x4-140, #cell4x4-156, #cell4x4-172, #cell4x4-188, #cell4x4-204, #cell4x4-220, #cell4x4-236, #cell4x4-252 { border-left:4px solid #000000; }
+.puzzle #cell4x4-15, #cell4x4-31, #cell4x4-47, #cell4x4-63, #cell4x4-79, #cell4x4-95, #cell4x4-111, #cell4x4-127, #cell4x4-143, #cell4x4-159, #cell4x4-175, #cell4x4-191, #cell4x4-207, #cell4x4-223, #cell4x4-239, #cell4x4-255 { border-right:4px solid #000000; }
