@@ -192,23 +192,23 @@
                                     <div class="col-sm-3">
                                         <label>Puzzle Size</label>
                                         <select class="form-control" id="size" name="size" onchange="sizeChange(this.value);">
-                                            <option value="2x2" selected="selected">2x2</option>
-                                            <option value="3x3" >3x3</option>
+                                            <option value="2x2">2x2</option>
+                                            <option value="3x3"  selected="selected">3x3</option>
                                             <option value="4x4">4x4</option>
                                         </select>
                                     </div>
                                     <div class="col-sm-3">
                                         <label>Puzzle Difficulty</label>
                                         <select class="form-control" id="difficulty" name="difficulty"  onchange="updateHiddenTextbox();">
-                                            <option value="Beginner" selected="selected">Beginner</option>
+                                            <option value="Beginner">Beginner</option>
                                             <option value="Advanced">Advanced</option>
-                                            <option value="Expert">Expert</option>
+                                            <option value="Expert" selected="selected">Expert</option>
                                         </select>
                                     </div>
                                     <div class="col-sm-4">
                                         <label>Enter Characters</label>
                                         <textarea class="form-control" style="resize: none;" rows="1"id="characterBank" name="word" ></textarea>
-                                        <label class="charLabel" name="charName" value="">4 characters for a 2x2 puzzle</label>
+                                        <label class="charLabel" name="charName" value="">9 characters for a 3x3 puzzle</label>
                                     </div>
                                 </div>
                             </div>
@@ -278,7 +278,8 @@
 	?>
 	
 	var lbl = document.getElementsByName('hiddenChar')[0];
-	lbl.value = beginner2x2;
+	//lbl.value = beginner2x2;
+	lbl.value = 40;
 	
 	// Update label information about the length of the input word based on selected puzzle size
 	function sizeChange(sizeValue){

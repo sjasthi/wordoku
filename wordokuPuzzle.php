@@ -233,8 +233,7 @@
 											echo('<tr>');
 											echo('<td style="border: none;"> </td>');
 											
-											for($i = 1; $i <= $size*$size; $i++){
-												
+											for($i = 1; $i <= (int) $size * (int) $size; $i++){
 												echo('<td style="border: none;"> '.$i.' </td>');
 											}
 											echo('<tr/>');
