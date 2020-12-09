@@ -7,9 +7,9 @@
 		 */
 		 
 	require("word_processor.php");
-	$ini = parse_ini_file('php.ini');
+	$ini = parse_ini_file('config.ini');
 	
-	// Set default hidden count values from the php.ini file
+	// Set default hidden count values from the config.ini file
 	// These will be passed on to JavaScript values to update the hidden count text box to default values when parameters change
 	$beginner2x2 = getHiddenCount("beginner", "2x2", $ini);
 	$advanced2x2 = getHiddenCount("advanced", "2x2", $ini);
@@ -127,7 +127,7 @@
 	}
 	
 	// Returns hidden count for the puzzle based off the passed in difficulty.
-	// Obtains values from the php.ini file.
+	// Obtains values from the config.ini file.
 	function getHiddenCount($difficulty, $size, $ini){
 		$option = $difficulty.$size;
 		
@@ -254,7 +254,7 @@
 
 <script>
 	<?php
-		//Set JavaScript values on initial load based off default values in the php.ini file
+		//Set JavaScript values on initial load based off default values in the config.ini file
 		echo('var beginner2x2 = '.$beginner2x2.';
 		');
 		echo('var advanced2x2 = '.$advanced2x2.';

@@ -11,7 +11,7 @@
 		 
 		require("Wordoku.php");
 		require("word_processor.php");
-		$ini = parse_ini_file('php.ini');
+		$ini = parse_ini_file('config.ini');
 		
 		$hiddenValues = [];
 		
