@@ -6,6 +6,8 @@
 		 *  After validation of input, the page is redirected to the Wordoku Puzzle page as a GET request with passed in parameters.
 		 */
 		 
+	
+	ob_start();
 	require("word_processor.php");
 	$ini = parse_ini_file('config.ini');
 	
@@ -120,7 +122,7 @@
 				//print_r("</br>");
 				//print_r($url);
 				
-				header("Location: ".$url);
+				header("Location:".$url);
 				die();
 			}
 		}
@@ -207,7 +209,7 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <label>Enter Characters</label>
-                                        <textarea class="form-control" style="resize: none;" rows="1"id="characterBank" name="word" ></textarea>
+                                        <textarea class="form-control" style="resize: none;" rows="1"id="characterBank" name="word" >మానవుడేమహనీయుడు</textarea>
                                         <label class="charLabel" name="charName" value="">9 characters for a 3x3 puzzle</label>
                                     </div>
                                 </div>

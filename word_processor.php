@@ -15,7 +15,7 @@
  * 
  *   The logic of splitting an "input string" to a set of logical characters
  *   would be different for each Language
- *   For example, "indic-wp-master/telugu_parser.php" focusses on Telugu parser
+ *   For example, "indic-wp/telugu_parser.php" focusses on Telugu parser
  */
 
 
