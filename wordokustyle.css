@@ -29,6 +29,7 @@ body {
     margin-left: auto;
     margin-right: auto;
   }
+
 .puzzle td {
     border: 2px solid #000000;
     text-align: center;
@@ -49,6 +50,26 @@ body {
 .puzzle #cell2x2-12, #cell2x2-13, #cell2x2-14, #cell2x2-15 { border-bottom: 4px solid #000000; }
 .puzzle #cell2x2-0,  #cell2x2-4,  #cell2x2-8, #cell2x2-12 { border-left: 4px solid #000000; }
 .puzzle #cell2x2-2,  #cell2x2-6,  #cell2x2-10, #cell2x2-14 { border-left: 4px solid #000000; }
+
+.puzzle #cell2x3-0, #cell2x3-1, #cell2x3-2, #cell2x3-3, #cell2x3-4, #cell2x3-5 { border-top: 4px solid #000000; }
+.puzzle #cell2x3-18, #cell2x3-19, #cell2x3-20, #cell2x3-21, #cell2x3-22, #cell2x3-23 { border-top: 4px solid #000000; }
+.puzzle #cell2x3-30, #cell2x3-31, #cell2x3-32, #cell2x3-33, #cell2x3-34, #cell2x3-35 { border-bottom: 4px solid #000000; }
+.puzzle #cell2x3-2, #cell2x3-8, #cell2x3-14, #cell2x3-20, #cell2x3-26, #cell2x3-32 { border-left: 4px solid #000000; }
+.puzzle #cell2x3-4, #cell2x3-10, #cell2x2-16,#cell2x3-22, #cell2x3-28, #cell2x3-34 { border-left: 4px solid #000000; }
+.puzzle #cell2x3-5, #cell2x3-11, #cell2x3-17, #cell2x3-23, #cell2x3-29, #cell2x3-35   { border-right: 4px solid #000000; }
+.puzzle #cell2x3-0,  #cell2x3-6,  #cell2x3-12, #cell2x3-18, #cell2x3-24, #cell2x3-30  { border-left: 4px solid #000000; }
+
+.puzzle #cell2x4-0, #cell2x4-1, #cell2x4-2, #cell2x4-3, #cell2x4-4, #cell2x4-5, #cell2x4-6, #cell2x4-7 { border-top: 4px solid #000000; }
+.puzzle #cell2x4-32, #cell2x4-33, #cell2x4-34, #cell2x4-35, #cell2x4-36, #cell2x4-37, #cell2x4-38, #cell2x4-39 { border-top: 4px solid #000000; }
+.puzzle #cell2x4-56, #cell2x4-57, #cell2x4-58, #cell2x4-59, #cell2x4-60, #cell2x4-61, #cell2x4-62, #cell2x4-63{ border-bottom: 4px solid #000000; }
+.puzzle #cell2x4-2, #cell2x4-10, #cell2x4-18, #cell2x4-26, #cell2x4-34, #cell2x4-42, #cell2x4-50, #cell2x4-58 { border-left: 4px solid #000000; }
+.puzzle #cell2x4-4, #cell2x4-12, #cell2x4-20,#cell2x4-28, #cell2x4-36, #cell2x4-44, #cell2x4-52, #cell2x4-60 { border-left: 4px solid #000000; }
+.puzzle #cell2x4-6, #cell2x4-14, #cell2x4-22,#cell2x4-30, #cell2x4-38, #cell2x4-46, #cell2x4-54, #cell2x4-62 { border-left: 4px solid #000000; }
+.puzzle #cell2x4-7, #cell2x4-15, #cell2x4-23,#cell2x4-31, #cell2x4-39, #cell2x4-47, #cell2x4-55, #cell2x4-63 { border-right: 4px solid #000000; }
+.puzzle #cell2x4-5, #cell2x4-13, #cell2x4-21, #cell2x4-29, #cell2x4-37, #cell2x4-45, #cell2x4-53, #cell2x4-61  { border-right: 4px solid #000000; }
+.puzzle #cell2x4-0,  #cell2x4-8,  #cell2x4-16, #cell2x4-24, #cell2x4-32, #cell2x4-40, #cell2x4-48, #cell2x4-56  { border-left: 4px solid #000000; }
+
+
 
 .puzzle #cell3x3-0, #cell3x3-1, #cell3x3-2, #cell3x3-3, #cell3x3-4, #cell3x3-5, #cell3x3-6, #cell3x3-7, #cell3x3-8 { border-top: 4px solid #000000; }
 .puzzle #cell3x3-27, #cell3x3-28, #cell3x3-29, #cell3x3-30, #cell3x3-31, #cell3x3-32, #cell3x3-33, #cell3x3-34, #cell3x3-35 { border-top:4px solid #000000; }
