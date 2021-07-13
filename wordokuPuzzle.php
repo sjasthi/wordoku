@@ -9,70 +9,148 @@
 		 */
 		session_start();
 		 
-		require("Wordoku.php");
-		require("word_processor.php");
-		$ini = parse_ini_file('config.ini');
-		
-		$hiddenValues = [];
-		
-		/**** Start input validation and default values ****/
-		
-		// Validate size is either 2x2, 3x3, or 4x4
-		if(isset($_GET["size"])){
+
+
+$nav_selected = "LIST";
+$left_buttons = "NO";
+$left_selected = "";
+
+include_once "db_credentials.php";
+
+//require("word_processor.php");
+include("./nav.php");
+require("Wordoku.php");
+require("word_processor.php");
+$ini = parse_ini_file('config.ini');
+ 
+
+
+  $db->set_charset("utf8");
+  $sql = "SELECT * FROM words_list
+            WHERE id = -1";
+  $sleep = true;
+  $touched = isset($_POST['ident']);
+  if (!$touched) {
+	  if(isset($_GET["size"])){
 			
-			$size = $_GET["size"];
-			
-			if(!($size == "2x2" || $size == "3x3" || $size == "4x4")){
-				$size = "2x2";
-			}
-			
-		}
-		else{
-			$size = "2x2";
-		}
-		
-		// Get difficulty name
-		if(isset($_GET["difficulty"])){
-			
-			$difficulty = $_GET["difficulty"];
-			
-			if(!($difficulty == 'Beginner' || $difficulty == 'Advanced' || 
-					$difficulty == 'Expert')){
-						
-				$difficulty = '';
-			}
-			else{
-				$difficulty = ' - Difficulty: '.$difficulty;
-			}
-		}
-		else{
-			$difficulty = '';
-		}
-		
-		$sizeNum = getSizeNum($size);
-		
-		// Validate hidden cell count is valid
-		if(isset($_GET["hidecount"])){
-			
-			$hiddenCount = $_GET["hidecount"];
-			
-			if($hiddenCount > $sizeNum * $sizeNum * $sizeNum * $sizeNum){
-				$hiddenCount = 0;
-			}
-		}
-		else{
-			$hiddenCount = 0;
-		}
-		
-		// Validate there is an input word
-		// If the input word is the wrong size the Wordoku class will fail at generation
-		if(isset($_GET["word"])){
+ $size = $_GET["size"];}
+ //else{$size =""}
+if(isset($_GET["word"])){
 			$word = $_GET["word"];
 			
 		}
 		else{
 			$word = "ABCD";
 		}
+//$size ="";
+if(isset($_GET["difficulty"])){
+			
+$difficulty = $_GET["difficulty"];}
+if(isset($_GET["hidecount"])){
+			
+$hide =$hiddenCount = $_GET["hidecount"];}
+else{
+//$hide ="";
+    echo "You need to select an entry.";
+	
+  ?>
+  
+    <button><a class="btn btn-sm" href="list.php">Go back</a></button>
+	<?php
+	die();
+}
+  ?>
+	
+  <?php
+
+
+  } else {
+	 
+    $id = $_POST['ident'];
+    $sql = "SELECT * FROM words_list
+            WHERE id = '$id'";
+  }
+  if ($touched) {
+	  
+    if (!$result = $db->query($sql)) {
+      die('There was an error running query[' . $connection->error . ']');
+    } //end if
+    //end if
+
+    if ($result->num_rows > 0) {
+      // output data of each row
+
+
+      while ($row = $result->fetch_assoc()) {
+
+       $word =$row['word'];
+	   $wordProcessor = new wordProcessor($word, "telugu");
+			$wordsize = $wordProcessor->getLength();
+			echo "the word size i : $wordsize";
+       $wordsize = strlen($word);
+	   if($wordsize == 4) {$size = "2x2";}
+	   if($wordsize == 6) {$size = "2x3";}
+	   if($wordsize == 8) {$size = "2x4";}
+	   if($wordsize == 9) {$size = "3x3";}
+	   if($wordsize == 16) {$size = "4x4";}
+	   if($wordsize == 81) {$size = "9x9";}
+	   
+	   $hide = ($wordsize*$wordsize)/2;
+	   
+	   
+	  
+ function formatMoney($number, $cents = 1) { // cents: 0=never, 1=if needed, 2=always
+  if (is_numeric($number)) { // a number
+    if (!$number) { // zero
+      $money = ($cents == 2 ? '0.00' : '0'); // output zero
+    } else { // value
+      if (floor($number) == $number) { // whole number
+        $money = number_format($number, ($cents == 2 ? 2 : 0)); // format
+      } else { // cents
+        $money = number_format(round($number, 2), ($cents == 0 ? 0 : 2)); // format
+      } // integer or decimal
+    } // value
+    return $money;
+  } // numeric
+} // formatMoney
+
+		 echo $word;
+		 echo $size;
+        $hide= formatMoney($hide, 0);
+	   echo $hide;
+      } //end while
+
+			
+    } //end if
+  }
+else {
+    echo "0 results";
+  } //end else
+
+		
+		
+		$hiddenValues = [];
+		
+		/**** Start input validation and default values ****/
+		
+		// Validate size is either 2x2, 3x3, or 4x4
+		
+		// Get difficulty name
+				
+			$difficulty = '';
+			
+		$sizeNum = getSizeNum($size);
+		
+		// Validate hidden cell count is valid
+		
+			$hiddenCount = $hide;
+		
+		
+		// Validate there is an input word
+		// If the input word is the wrong size the Wordoku class will fail at generation
+		
+			
+		
 		
 		// Check if the show solution option was passed.  If not, then don't show solution.
 		if(isset($_GET["showsolution"])){
@@ -105,23 +183,38 @@
 		$_SESSION["size"] = $size;
 		$_SESSION["difficulty"] = $difficulty;
 		
+				// Address should be in format: http://localhost/wordoku/wordokupuzzle.php?size=2x2&difficulty=beginner&word=ABCD
+				$url = "wordokuPuzzle.php?size=".$size."&hidecount=".$hiddenCount."&difficulty=".$difficulty."&word=".$word."&showsolution=".$showSolution;
+				//print_r("</br>");
+				//print_r($url);
+				
+				//header("Location:".$url);
+				
+			
 		// Returns int value based off passed in size input parameter
 		function getSizeNum($size){
-			switch($size){
-				case "2x2":
-					return 2;
+		switch($size){
+			case "2x2":
+				return 2;
+				break;
+			case "2x3":
+				return 6;
+				break;
+			case "2x4":
+					return 8;
 					break;
 				case "3x3":
 					return 3;
-					break;
-				case "4x4":
-					return 4;
-					break;
+				break;
+			case "4x4":
+				return 4;
+				break;
 				default:
-					return 2;
+				return 2;
 					break;
 			}
 		}
+		
 	?>
 
     <!-- Latest compiled and minified CSS -->
@@ -233,10 +326,11 @@
 											echo('<tr>');
 											echo('<td style="border: none;"> </td>');
 											
-											for($i = 1; $i <= (int) $size * (int) $size; $i++){
+											for($i = 1; $i <= $wordsize; $i++){
 												echo('<td style="border: none;"> '.$i.' </td>');
+											
 											}
-											echo('<tr/>');
+											echo('</tr>');
 											echo('<tr>');
 											
 											$i = 0;
@@ -387,12 +481,12 @@
 													// Will appear in a grid like fasion to cells can be specified as A1, B2, etc.
 													echo('<tr>');
 													echo('<td style="border: none;"> </td>');
-													
-													for($i = 1; $i <= $size*$size; $i++){
+													echo $size;
+													for($i = 1; $i <= $wordsize; $i++){
 														
 														echo('<td style="border: none;"> '.$i.' </td>');
 													}
-													echo('<tr/>');
+													echo('</tr>');
 													echo('<tr>');
 													
 													$i = 0;
