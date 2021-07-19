@@ -18,6 +18,7 @@ class Wordoku{
 	private $puzzle = [];
 	
 	private $cellSize = 3;
+	private $cellSize1 = 3;
 	private $gridSize = 9;
 	private $hiddenCount = 0;
 	
@@ -28,13 +29,24 @@ class Wordoku{
 		// If something is wrong it may go to a default value or return false and produce a blank puzzle.
 		
 		// Validate size
-		if(!($size == 2 || $size == 3 || $size == 4)){
+		if(!($size == 2 || $size == 3 || $size == 4 || $size == 6 || $size == 8)){
 			return false;
 		}
-		else{
+		
+		
+			 else{ if (($size == 6 || $size == 8) ){
+			 $this->cellSize1 = 2;
+			 $this->cellSize = $size/2;
+		    $this->gridSize = $this->cellSize * $this->cellSize1;
+			 }
+			 else{
 			$this->cellSize = $size;
-			$this->gridSize = $size * $size;
+			$this->cellSize1 = $size;
+		    $this->gridSize = $this->cellSize * $this->cellSize1;
 		}
+		
+			 }
+		
 		
 		// Validate input word length
 		// Create a word processor that handles Telugu words
@@ -206,10 +218,10 @@ class Wordoku{
 		$boxNumbers = [];
 		
 		$boxRow = floor($row / $this->cellSize);
-		$boxCol = floor($col / $this->cellSize);
+		$boxCol = floor($col / $this->cellSize1);
 		
 		for($r = $boxRow * $this->cellSize; $r < $boxRow * $this->cellSize + $this->cellSize; $r++){
-			for($c = $boxCol * $this->cellSize; $c < $boxCol * $this->cellSize + $this->cellSize; $c++){
+			for($c = $boxCol * $this->cellSize1; $c < $boxCol * $this->cellSize1 + $this->cellSize1; $c++){
 				array_push($boxNumbers, $this->solution[$r][$c]);
 			}
 		}
