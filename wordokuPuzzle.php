@@ -86,8 +86,8 @@ else{
        $word =$row['word'];
 	   $wordProcessor = new wordProcessor($word, "telugu");
 			$wordsize = $wordProcessor->getLength();
-			echo "the word size i : $wordsize";
-       $wordsize = strlen($word);
+			echo "the word size is : $wordsize";
+      // $wordsize = strlen($word);
 	   if($wordsize == 4) {$size = "2x2";}
 	   if($wordsize == 6) {$size = "2x3";}
 	   if($wordsize == 8) {$size = "2x4";}

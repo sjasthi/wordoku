@@ -13,7 +13,7 @@ $sizeNum =0;
 echo $startid;
 echo $endid;
 require("Wordoku.php");
-$wordoku = new Wordoku();
+$wordoku = new Wordoku($sizeNum, $word, $hiddenCount);
 
 include_once "db_credentials.php";
 require("word_processor.php");
