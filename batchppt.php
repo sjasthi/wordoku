@@ -1,223 +1,145 @@
 
-
 <?php
 
-//require('wordoku.php');
-//require ('batch.php');
-$startid = $_POST['startid'];
-$endid = $_POST['endid'];
-$count = 0;
- $word ="";
- $hiddenCount =0;
-$sizeNum =0;
-echo $startid;
-echo $endid;
-require("Wordoku.php");
-$wordoku = new Wordoku($sizeNum, $word, $hiddenCount);
+include_once 'PHPPresentation\samples\Sample_Header.php';
 
-include_once "db_credentials.php";
-require("word_processor.php");
- 
+use PhpOffice\PhpPresentation\PhpPresentation;
+use PhpOffice\PhpPresentation\Style\Border;
+use PhpOffice\PhpPresentation\Style\Color;
+use PhpOffice\PhpPresentation\Style\Fill;
 
-function formatMoney($number, $cents = 1) { // cents: 0=never, 1=if needed, 2=always
-  if (is_numeric($number)) { // a number
-    if (!$number) { // zero
-      $money = ($cents == 2 ? '0.00' : '0'); // output zero
-    } else { // value
-      if (floor($number) == $number) { // whole number
-        $money = number_format($number, ($cents == 2 ? 2 : 0)); // format
-      } else { // cents
-        $money = number_format(round($number, 2), ($cents == 0 ? 0 : 2)); // format
-      } // integer or decimal
-    } // value
-    return $money;
-  } // numeric
-} // formatMoney
-$difficulty = "beginner";
-	function getSizeNum($size){
-		switch($size){
-			case "2x2":
-				return 2;
-				break;
-				case "2x4":
-				return 8;
-				break;
-				case "2x3":
-				return 6;
-				break;
-			case "3x3":
-				return 3;
-				break;
-			case "4x4":
-				return 4;
-				break;
-			default:
-				return 2;
-				break;
-		}
-	}
-	
-?>
+// Create new PHPPresentation object
+echo date('H:i:s') . ' Create new PHPPresentation object' . EOL;
+$objPHPPresentation = new PhpPresentation();
 
-<!DOCTYPE HTML>
-<html>
-  <head>
-     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="wordokustyle.css">
-	
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-	
-    <!-- Latest compiled JavaScript -->
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+// Set properties
+echo date('H:i:s') . ' Set properties' . EOL;
+$objPHPPresentation->getDocumentProperties()->setCreator('PHPOffice')
+    ->setLastModifiedBy('PHPPresentation Team')
+    ->setTitle('Sample 06 Title')
+    ->setSubject('Sample 06 Subject')
+    ->setDescription('Sample 06 Description')
+    ->setKeywords('office 2007 openxml libreoffice odt php')
+    ->setCategory('Sample Category');
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale = 1">
-    <title>Wordoku Puzzle Generator</title>
-	
-</head>
-  
-  <body>
-    <div class="Worddoku">
-	<?php
-	
-	
-     		for ($s=$startid; $s<=$endid; $s++){
-				//$i=$startid;
-   $sql1 = "SELECT * FROM words_list WHERE id = $s";
-   $result1 = $db->query($sql1);
-   if ($result1->num_rows > 0){
-   while ($row = $result1->fetch_assoc()) {
+// Remove first slide
+echo date('H:i:s') . ' Remove first slide' . EOL;
+$objPHPPresentation->removeSlideByIndex(0);
 
-       $word =$row['word'];
-	   
-    $wordsize = strlen($word);
-	   if($wordsize == 4) {$size = "2x2";}
-	   if($wordsize == 6) {$size = "2x3";}
-	   if($wordsize == 8) {$size = "2x4";}
-	   if($wordsize == 9) {$size = "3x3";}
-	   if($wordsize == 16) {$size = "4x4";}
-	   if($wordsize == 81) {$size = "9x9";}
-	   
-	   $hiddenCount = ($wordsize*$wordsize)/2;
-	   
-	  
-        $hiddenCount= formatMoney($hiddenCount, 0);
-	   
-	//   $showSolution ="false";
-	//   $url = "wordokuPuzzle.php?size=".$size."&hidecount=".$hiddenCount."&difficulty=".$difficulty."&word=".$word."&showsolution=".$showSolution;
-				//print_r("</br>");
-				//print_r($url);
-	//			 $showSolution ="true";
-	//			  $url = "wordokuPuzzle.php?size=".$size."&hidecount=".$hiddenCount."&difficulty=".$difficulty."&word=".$word."&showsolution=".$showSolution;
-				//print_r("</br>");
-				//print_r($url);
-				//header("Location:".$url);
-				//die();
-				$sizeNum = getSizeNum($size);
-				
-			//echo '<br>';
-		//	echo " solution";
-	    $puzzles = generate($sizeNum, $size,$hiddenCount,$word,$count );
-        $solutions = solution($sizeNum, $size, $hiddenCount, $word  );	
-echo $puzzles;
-echo $puzzles;
-   }
-       //end while
-   } 
-   
+// Create slide
+echo date('H:i:s') . ' Create slide' . EOL;
+$currentSlide = createTemplatedSlide($objPHPPresentation);
+
+// Create a shape (table)
+echo date('H:i:s') . ' Create a shape (table)' . EOL;
+$shape = $currentSlide->createTableShape(3);
+$shape->setHeight(200);
+$shape->setWidth(600);
+$shape->setOffsetX(150);
+$shape->setOffsetY(300);
+
+// Add row
+echo date('H:i:s') . ' Add row' . EOL;
+$row = $shape->createRow();
+$row->getFill()->setFillType(Fill::FILL_GRADIENT_LINEAR)
+    ->setRotation(90)
+    ->setStartColor(new Color('FFE06B20'))
+    ->setEndColor(new Color('FFFFFFFF'));
+$cell = $row->nextCell();
+$cell->setColSpan(3);
+$cell->createTextRun('Title row')->getFont()->setBold(true)->setSize(16);
+$cell->getBorders()->getBottom()->setLineWidth(4)
+    ->setLineStyle(Border::LINE_SINGLE)
+    ->setDashStyle(Border::DASH_DASH);
+$cell->getActiveParagraph()->getAlignment()
+    ->setMarginLeft(10);
+
+// Add row
+echo date('H:i:s') . ' Add row' . EOL;
+$row = $shape->createRow();
+$row->setHeight(20);
+$row->getFill()->setFillType(Fill::FILL_GRADIENT_LINEAR)
+    ->setRotation(90)
+    ->setStartColor(new Color('FFE06B20'))
+    ->setEndColor(new Color('FFFFFFFF'));
+$oCell = $row->nextCell();
+$oCell->createTextRun('R1C1')->getFont()->setBold(true);
+$oCell->getActiveParagraph()->getAlignment()->setMarginLeft(20);
+$oCell = $row->nextCell();
+$oCell->createTextRun('R1C2')->getFont()->setBold(true);
+$oCell = $row->nextCell();
+$oCell->createTextRun('R1C3')->getFont()->setBold(true);
+
+foreach ($row->getCells() as $cell) {
+    $cell->getBorders()->getTop()->setLineWidth(4)
+        ->setLineStyle(Border::LINE_SINGLE)
+        ->setDashStyle(Border::DASH_DASH);
 }
- function solution($word, $sizeNum, $hiddenCount, $size){
-	 $word = $word;
-	$sizeNum = $sizeNum;
-	$hiddenCount = $hiddenCount;
-	$size =$size;
-	$wordoku = new Wordoku($sizeNum, $word, $hiddenCount);
-		$solution = $wordoku->getSolution();
-	
-	
-	echo	'<div class="col-sm-6";  id="solutionNormal"">';
-	
-	
-							echo	'<div class="puzzle">';
-									echo '<table id="grid">';
-		echo "<h3>The Solution</h3>";
-										
-											// Display a normal/default puzzle
-										$i = 0;
-													foreach ($solution as $key => $value) 
-													{
-														echo'<tr>';
-														foreach ($value as $k => $val){
-															if($puzzle[$key][$k] != " "){
-																echo'<td id="cell'.$size.'-'.$i.'" bgcolor="#EEEEEE"> '.$val.' </td>
-																';
-															}
-															else{
-																echo'<td id="cell'.$size.'-'.$i.'" bgcolor="#EEEEEE" style="color: red;"> '.$val.' </td>
-																';
-															}
-															$i++;
-														}
-														echo'</tr>';
-													}	
-									
-								echo	"</table>";
-									echo "</div>";
-								echo	"</div>";
-			}
-function generate($sizeNum, $size,$hiddenCount,$word, $count){
-	$word = $word;
-	$sizeNum = $sizeNum;
-	$hiddenCount = $hiddenCount;
-	$size =$size;
-				$wordoku = new Wordoku($sizeNum, $word, $hiddenCount);
-				$count = $count + 1;
-				echo '<font size=12 face="Arial">';
-				echo "$count.  $word";
-				echo '<font>';
-				echo '<br>';
-				
-				$puzzle = $wordoku->getPuzzle();
-				
-			
-				
-	echo'<div class="col-sm-6"; id="puzzleNormal"">';
-	
-	echo'<h3>The Puzzle</h3>';	
-									echo	'<div class="puzzle">';
-									echo '<table id="grid" >';
-		
-										
-											// Display a normal/default puzzle
-											$i = 0;
-											foreach ($puzzle as $key => $value) 
-											{
-												echo'<tr>';
-												foreach ($value as $k => $val){
-													if($val != " "){
-														echo'<td id="cell'.$size.'-'.$i.'" bgcolor="#EEEEEE"> '.$val.' </td>
-														';
-													}
-													else{
-														echo'<td id="cell'.$size.'-'.$i.'"> '.$val.' </td>
-														';
-													}
-													$i++;
-												}
-												echo'</tr>';
-											}
-								
-									
-									echo '</table>';
-									echo '</div>';
-			
-			echo '</div>';
-				}
 
-?>
+// Add row
+echo date('H:i:s') . ' Add row' . EOL;
+$row = $shape->createRow();
+$row->getFill()->setFillType(Fill::FILL_SOLID)
+    ->setStartColor(new Color('FFE06B20'))
+    ->setEndColor(new Color('FFE06B20'));
+$oCell = $row->nextCell();
+$oCell->createTextRun('R2C1');
+$oCell->getActiveParagraph()->getAlignment()
+    ->setMarginLeft(30)
+    ->setTextDirection(\PhpOffice\PhpPresentation\Style\Alignment::TEXT_DIRECTION_VERTICAL_270);
+$oCell = $row->nextCell();
+$oCell->createTextRun('R2C2');
+$oCell->getActiveParagraph()->getAlignment()
+    ->setMarginBottom(10)
+    ->setMarginTop(20)
+    ->setMarginRight(30)
+    ->setMarginLeft(40);
+$oCell = $row->nextCell();
+$oCell->createTextRun('R2C3');
 
-    </div>
-  </body>
-</html>
+// Add row
+echo date('H:i:s') . ' Add row' . EOL;
+$row = $shape->createRow();
+$row->getFill()->setFillType(Fill::FILL_SOLID)
+    ->setStartColor(new Color('FFE06B20'))
+    ->setEndColor(new Color('FFE06B20'));
+$oCell = $row->nextCell();
+$oCell->createTextRun('R3C1');
+$oCell->getActiveParagraph()->getAlignment()->setMarginLeft(40);
+$oCell = $row->nextCell();
+$oCell->createTextRun('R3C2');
+$oCell = $row->nextCell();
+$oCell->createTextRun('R3C3');
+
+// Add row
+echo date('H:i:s') . ' Add row' . EOL;
+$row = $shape->createRow();
+$row->getFill()->setFillType(Fill::FILL_SOLID)
+    ->setStartColor(new Color('FFE06B20'))
+    ->setEndColor(new Color('FFE06B20'));
+$cellC1 = $row->nextCell();
+$textRunC1 = $cellC1->createTextRun('Link');
+$textRunC1->getHyperlink()->setUrl('https://github.com/PHPOffice/PHPPresentation/')->setTooltip('PHPPresentation');
+$cellC1->getActiveParagraph()->getAlignment()->setMarginLeft(50);
+$cellC2 = $row->nextCell();
+$textRunC2 = $cellC2->createTextRun('RichText with');
+$textRunC2->getFont()->setBold(true);
+$textRunC2->getFont()->setSize(12);
+$textRunC2->getFont()->setColor(new Color('FF000000'));
+$cellC2->createBreak();
+$textRunC2 = $cellC2->createTextRun('Multiline');
+$textRunC2->getFont()->setBold(true);
+$textRunC2->getFont()->setSize(14);
+$textRunC2->getFont()->setColor(new Color('FF0088FF'));
+$cellC3 = $row->nextCell();
+$textRunC3 = $cellC3->createTextRun('Link Github');
+$textRunC3->getHyperlink()->setUrl('https://github.com')->setTooltip('GitHub');
+$cellC3->createBreak();
+$textRunC3 = $cellC3->createTextRun('Link Google');
+$textRunC3->getHyperlink()->setUrl('https://google.com')->setTooltip('Google');
+
+// Save file
+echo write($objPHPPresentation, basename(__FILE__, '.php'), $writers);
+if (!CLI) {
+    include_once 'PHPPresentation\samples\Sample_Footer.php';
+}

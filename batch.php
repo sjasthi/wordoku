@@ -6,8 +6,9 @@
 		 *  After validation of input, the page is redirected to the Wordoku Puzzle page as a GET request with passed in parameters.
 		 */
 		 
-	
+	session_start();
 	ob_start();
+	
 	$startid ="";
 	$endid ="";
 	
@@ -29,8 +30,24 @@
         $endid = $_POST['endid'];
 
 
-	 } 
-	 }
+  
+
+
+        $_session["startid"]= $_POST['startid'];
+		$_session["endid"]= $_POST['endid'];
+    }
+
+
+
+
+}
+
+
+
+
+
+	  
+	
 ?>
 
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN''http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
@@ -39,7 +56,7 @@
 <title> Wordoku</title>
 </head>
 <body>
-<form action="batchhml.php" method="post">
+<form action="batchhml.php"   method="post">
 <div class="container-fluid">
             <div class="jumbotron" id="jumbos">
             </div>
@@ -98,8 +115,12 @@
 <div class="row">
 <br>
                     <div class="col-sm-6"><input type="submit" name="submit" class="btn btn-primary btn-lg" value="HTML"></div>
+					<div class="col-sm-6"><input type="button" name="button" onclick="window.location.href='PPTX.php'" class="btn btn-primary btn-lg" value="PowerPont"></div>
                
-				 <div class="col-sm-6"><input type="submit" name="submit" class="btn btn-primary btn-lg" value="PowerPoint"></div>
+				 <div class="col-sm-6"><input type="button" name="test"  onclick="window.location.href='batchfinaltest.php'" class="btn btn-primary btn-lg" value="finaltest"></div>
+				 
+				 
+				 
                 </div>
 				 </div>
 				

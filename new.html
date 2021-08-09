@@ -1,0 +1,27 @@
+<html>
+<head>
+<title>ShotDev.Com Tutorial</title>
+</head>
+<body>
+<?php
+
+    $ppApp = new COM("PowerPoint.Application");
+    $ppApp->Visible = True;
+    $strPath = realpath(basename(getenv($_SERVER["SCRIPT_NAME"]))); 
+    $FileName = "MyPP";
+    $ppName = "MySlides.ppt";
+
+
+    //*** Open Document ***//
+    $ppApp->Presentations->Open(realpath($ppName));
+
+    //*** Save Document ***//
+    $ppApp->ActivePresentation->SaveAs($strPath."/".$FileName,17);  //'*** 18=PNG, 19=BMP **'
+    //$ppApp->ActivePresentation->SaveAs(realpath($FileName),17);
+
+    $ppApp->Quit;
+    $ppApp = null;
+?>
+PowerPoint Created to Folder <b><?php $FileName?></b>
+</body>
+</html>
